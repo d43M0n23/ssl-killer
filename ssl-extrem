@@ -1,13 +1,13 @@
 #!/bin/bash
 
 ######################################################################
-# copyspl0it
+# ssl-killer
 # search and copy Exploit from exploit-db 2 metasploit-framework
 # Needs searchsploit amd metasploit-framework installed
 # script install this tools for you
-# First run from github directory ./copyspl0it ... after install
-# use command copyspl0it system wide
-# command: > copyspl0it $searchsting1 $searchstring2 $searchstring3
+# First run from github directory ./ssl-killer ... after install
+# use command ssl-killer system wide
+# command: > ssl-killer $searchsting1 $searchstring2 $searchstring3
 ######################################################################
 
 ######################################################################
@@ -43,7 +43,7 @@ version=v1.0
 vdate=16.09.2017
 
 # Local Destination
-INSTALL_DIR=/usr/share/copyspl0it
+INSTALL_DIR=/usr/share/ssl-killer
 
 # Exploit-db dir
 SOURCE_PATH=/usr/share/exploitdb/platforms
@@ -58,28 +58,28 @@ if ! hash msfconsole 2>/dev/null; then sudo apt-get update && apt-get upgrade -y
 
 #INSTALL
 if [ ! -d $INSTALL_DIR ]; then
-echo -e "\n${green} + -- --=[This is your first run of the copyspl0it script${clear}"
-echo -e "${green} + -- --=[This script will install copyspl0it under $INSTALL_DIR.${clear}"
-echo -e "${green} + -- --=[After install you can use the command 'copyspl0it' Server/System wide and remove the downloaded git folder${clear}"
+echo -e "\n${green} + -- --=[This is your first run of the ssl-killer script${clear}"
+echo -e "${green} + -- --=[This script will install ssl-killer under $INSTALL_DIR.${clear}"
+echo -e "${green} + -- --=[After install you can use the command 'ssl-killer' Server/System wide and remove the downloaded git folder${clear}"
 sleep 2
 mkdir -p $INSTALL_DIR 2> /dev/null
 cp -Rf $PWD/* $INSTALL_DIR 2> /dev/null
 rm -f /usr/bin/copysploit
-rm -f /usr/bin/copyspl0it
-ln -s $INSTALL_DIR/copyspl0it /usr/bin/copyspl0it
+rm -f /usr/bin/ssl-killer
+ln -s $INSTALL_DIR/ssl-killer /usr/bin/ssl-killer
 echo -e "${green} + -- --=[Installation Finish.${clear}"
 sleep 2
 fi
 
 ### FUNCTIONS ###
 #Latest release
-LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/d43M0n23/copyspl0it/releases/latest)
+LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/d43M0n23/ssl-killer/releases/latest)
 LATEST_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
 
 #UPDATE NEW VERSION
 if [ "$LATEST_VERSION" != "$version" ]; then
-echo -e "\n${red}Your Version of Copyspl0it is outdated!${clear}"
-echo -e "\n${green}Please use the update function: copyspl0it --update!${clear}"
+echo -e "\n${red}Your Version of ssl-killer is outdated!${clear}"
+echo -e "\n${green}Please use the update function: ssl-killer --update!${clear}"
 sleep 5
 fi
 
@@ -88,12 +88,12 @@ if [ "$1"  = "--update" ]; then
 echo -e "\n${turk}You have select the update Feature${clear}"
 sleep 2
 cd /tmp/
-git clone https://github.com/d43M0n23/copyspl0it.git
-cp -Rf copyspl0it/* $INSTALL_DIR 2> /dev/null
-rm -f /usr/bin/copyspl0it
-ln -s $INSTALL_DIR/copyspl0it /usr/bin/copyspl0it
-echo -e "\n${green}Update finish.Please restart copyspl0it.${clear}"
-rm -r copyspl0it
+git clone https://github.com/d43M0n23/ssl-killer.git
+cp -Rf ssl-killer/* $INSTALL_DIR 2> /dev/null
+rm -f /usr/bin/ssl-killer
+ln -s $INSTALL_DIR/ssl-killer /usr/bin/ssl-killer
+echo -e "\n${green}Update finish.Please restart ssl-killer.${clear}"
+rm -r ssl-killer
 exit
 fi
 
@@ -101,9 +101,9 @@ fi
 if [ "$1"  = "--deinstall" ]; then
 echo -e "\n${turk}You have select the deinstall Feature${clear}"
 sleep 2
-rm -f /usr/bin/copyspl0it
+rm -f /usr/bin/ssl-killer
 cd /usr/share/
-rm -r copyspl0it/
+rm -r ssl-killer/
 echo -e "\n${turk}deinstall Finish${clear}"
 cd
 exit
@@ -112,19 +112,16 @@ fi
 #START MAINSTAGE
 clear
 echo -e '\n'
-echo -e '                                       ______  _ __ '
-echo -e '    _________  ____  __  ___________  / / __ \(_) /_'
-echo -e '   / ___/ __ \/ __ \/ / / / ___/ __ \/ / / / / / __/'
-echo -e '  / /__/ /_/ / /_/ / /_/ (__  ) /_/ / / /_/ / / /_  '
-echo -e '  \___/\____/ .___/\__, /____/ .___/_/\____/_/\__/  '
-echo -e '           /_/    /____/    /_/                     '
+echo -e '             __    __    _ ____       '
+echo -e '    ___ ___ / /___/ /__ (_) / /__ ____'
+echo -e '   (_-<(_-</ /___/  '_// / / / -_) __/'
+echo -e '  /___/___/_/   /_/\_\/_/_/_/\__/_/   '
+
 echo -e "\n${orange} + -- --=[https://3xpl0it.com${clear} ${red}Version ${version}${clear}"
 sleep 1
 
 
 echo -e "\n"
 cat <<EOF
-search the exploit like searchsploit string1 string2 string3.
-e.g 'copyspl0it wordpress 4.7.0 inject'
-Then specify the number of the exploit found.
+Enter Your Target.
 EOF
