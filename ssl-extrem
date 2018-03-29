@@ -182,15 +182,11 @@ case $attacker in
 
         1)
 		echo "Bettercap selected"
-		read -p "domain (e.g. google.com)? " wp_domain
-		if [ $wp_domain ]; then
-		wpscan --update
-		wpscan --url $wp_domain --enumerate 2>&1 | tee -a wpscan_${wp_domain}.log
-		echo -e "\n${yell}Logfile is saved as wpscan_${wp_domain}.log${clear}\n"
-		scanner=Wpscan_${wp_domain}
-		scanlog=wpscan_${wp_domain}.log
-		#mail -s "sc4nn3r: ${scanner}" $email < $scanlog -aFrom:cms-sc4nn3r@3xpl0it.com
-		sh_mail
+		read -p "target (e.g. 192.168.0.x)? " better_target
+		read -p "gateway ? " better_gateway
+		if [ $better_target ]; then
+		bettercap --log-timestamp  --log network.log -T $better_target -G $better_gateway -X
+		#sh_mail
 		else
         	echo -e "\nPlease enter a domain!\n"
 		fi
