@@ -170,7 +170,7 @@ echo '| 2.SSL-Stripe                                    |'
 echo '| x.Quit.                                         |'
 echo '+-------------------------------------------------+'
 read -p "Attacker Nr (1-x)? " attacker
-
+do
 case $attacker in
 
         1)
