@@ -2,8 +2,7 @@
 
 ######################################################################
 # ssl-killer
-# search and copy Exploit from exploit-db 2 metasploit-framework
-# Needs searchsploit amd metasploit-framework installed
+# Needs Bettercaps
 # script install this tools for you
 # First run from github directory ./ssl-killer ... after install
 # use command ssl-killer system wide
@@ -168,15 +167,9 @@ echo '| Own-Scripts, Aux & Scanner-Frames               |'
 echo '+-------------------------------------------------+'
 echo '| 1.Bettercap                                     |'
 echo '| 2.SSL-Stripe                                    |'
-echo '| a.All.                                          |'
 echo '| x.Quit.                                         |'
 echo '+-------------------------------------------------+'
 read -p "Attacker Nr (1-x)? " attacker
-if [ $attacker = a ]; then
-read -p "Wordpress or Joomla (w/j)? " cms_system
-fi
-
-do
 
 case $attacker in
 
